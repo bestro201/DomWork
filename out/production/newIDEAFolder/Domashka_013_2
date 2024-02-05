@@ -1,0 +1,28 @@
+public class SubstringExtractor {
+    public static String extractSubstring(String input, int startIndex) {
+        return extractSubstring(input, startIndex, input.length());
+    }
+
+    public static String extractSubstring(String input, int startIndex, int endIndex) {
+        // Проверяем корректность индексов
+        if (startIndex < 0 || startIndex >= input.length() || endIndex < 0 || endIndex > input.length()) {
+            System.out.println("Один или оба индекса указаны некорректно.");
+            return "";
+        }
+
+        // Возвращаем подстроку
+        return input.substring(startIndex, endIndex);
+    }
+
+    public static void main(String[] args) {
+        String inputString = "Hello, world!";
+
+        // Пример использования с одним индексом
+        String result1 = extractSubstring(inputString, 7);
+        System.out.println("Substring 1: " + result1);
+
+        // Пример использования с двумя индексами
+        String result2 = extractSubstring(inputString, 7, 12);
+        System.out.println("Substring 2: " + result2);
+    }
+}

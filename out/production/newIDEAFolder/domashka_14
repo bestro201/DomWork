@@ -1,0 +1,39 @@
+public class ArraySwapper {
+    public static void swap(int[] array, int index1, int index2) {
+        // Проверка на выход за пределы массива
+        if (index1 < 0 || index1 >= array.length || index2 < 0 || index2 >= array.length) {
+            System.out.println("Одно или оба из указанных индексов выходят за пределы массива.");
+            return;
+        }
+
+        // Меняем местами значения по указанным индексам
+        int temp = array[index1];
+        array[index1] = array[index2];
+        array[index2] = temp;
+    }
+
+    public static void swap(String[] array, int index1, int index2) {
+        // Проверка на выход за пределы массива
+        if (index1 < 0 || index1 >= array.length || index2 < 0 || index2 >= array.length) {
+            System.out.println("Одно или оба из указанных индексов выходят за пределы массива.");
+            return;
+        }
+
+        // Меняем местами значения по указанным индексам
+        String temp = array[index1];
+        array[index1] = array[index2];
+        array[index2] = temp;
+    }
+
+    public static void main(String[] args) {
+        int[] intArray = {0, 1, 2, 3, 4, 5, 6};
+        System.out.println("Before swapping: " + Arrays.toString(intArray));
+        swap(intArray, 1, 5);
+        System.out.println("After swapping: " + Arrays.toString(intArray));
+
+        String[] stringArray = {"apple", "banana", "cherry", "date"};
+        System.out.println("Before swapping: " + Arrays.toString(stringArray));
+        swap(stringArray, 0, 2);
+        System.out.println("After swapping: " + Arrays.toString(stringArray));
+    }
+}
