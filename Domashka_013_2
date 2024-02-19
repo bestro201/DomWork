@@ -1,28 +1,67 @@
-public class SubstringExtractor {
-    public static String extractSubstring(String input, int startIndex) {
-        return extractSubstring(input, startIndex, input.length());
+interface PaymentSystem {
+    void transferMoney(double amount, String recipient);
+    void withdrawMoney(double amount);
+    double checkBalance();
+}
+
+class BankAccount implements PaymentSystem {
+    private double balance;
+
+    public BankAccount(double initialBalance) {
+        this.balance = initialBalance;
     }
 
-    public static String extractSubstring(String input, int startIndex, int endIndex) {
-        // Проверяем корректность индексов
-        if (startIndex < 0 || startIndex >= input.length() || endIndex < 0 || endIndex > input.length()) {
-            System.out.println("Один или оба индекса указаны некорректно.");
-            return "";
-        }
-
-        // Возвращаем подстроку
-        return input.substring(startIndex, endIndex);
+    @Override
+    public void transferMoney(double amount, String recipient) {
+      
+     System.out.println(amount + " переведено на счет " + recipient);
     }
 
-    public static void main(String[] args) {
-        String inputString = "Hello, world!";
+    @Override
+    public void withdrawMoney(double amount) {
+      
+        System.out.println(amount + " снято со счета");
+    }
 
-        // Пример использования с одним индексом
-        String result1 = extractSubstring(inputString, 7);
-        System.out.println("Substring 1: " + result1);
-
-        // Пример использования с двумя индексами
-        String result2 = extractSubstring(inputString, 7, 12);
-        System.out.println("Substring 2: " + result2);
+    @Override
+    public double checkBalance() {
+        return balance;
     }
 }
+class ElectronicWallet implements PaymentSystem {
+    private double balance;
+
+ public ElectronicWallet(double initialBalance) {
+        this.balance = initialBalance;
+    }
+
+    @Override
+    public void transferMoney(double amount, String recipient) {
+       
+        System.out.println(amount + " переведено в электронный кошелек " + recipient);
+    }
+
+    @Override
+    public void withdrawMoney(double amount) {
+       
+        System.out.println(amount + " снято из электронного кошелька");
+    }
+
+    @Override
+    public double checkBalance() {
+        return balance;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        BankAccount bankAccount = new BankAccount(1000);
+        ElectronicWallet wallet = new ElectronicWallet(500);
+
+        bankAccount.transferMoney(200, "123456");
+        wallet.transferMoney(100, "Почтовій ящик");
+
+        System.out.println("Баланс банковского счета: " + bankAccount.checkBalance());
+        System.out.println("Баланс электронного кошелька: " + wallet.checkBalance());
+    }
+}
+
