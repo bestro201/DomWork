@@ -1,21 +1,34 @@
-import java.util.Scanner;
+ackage Domashka_25;
 
-public class Domashka_132 {
+ interface Swimmer {
+     void swim ();
+}
+ interface Ranner {
+     void run ();
+}
+interface Fahrad {
+     void fahrad ();
+}
+class Triathlete implements Swimmer, Ranner {
+    @Override
+    public void swim() {
+        System.out.println("Спортсмен плавает.");
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Спортсмен бегает. ");
+    }
+
+
+}
+
+
+public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите число" );
-        double x = scanner.nextDouble();
-        System.out.println("Вы ввели "+x );
-
-        Scanner scanner1 = new Scanner(System.in);
-        System.out.println("Введите второе число" );
-        double z= scanner1.nextDouble();
-double s=x+z;
-double v=x-z;
-        System.out.println("Сумма чисел будет :"+s);
-        System.out.println("Разность чисел будет :"+v);
-
-
+        Triathlete triathlete = new Triathlete();
+        triathlete.swim();
+        triathlete.run();
 
     }
 }
